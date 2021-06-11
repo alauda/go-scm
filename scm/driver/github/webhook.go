@@ -594,7 +594,7 @@ type (
 		Repository   repository             `json:"repository"`
 		Label        label                  `json:"label"`
 		Sender       user                   `json:"sender"`
-		Changes      pullRequestHookChanges `json:"changes"`
+		Changes      map[string]interface{} `json:"changes"`
 		Installation *installationRef       `json:"installation"`
 	}
 
@@ -1033,8 +1033,8 @@ func convertTagHook(src *createDeleteHook) *scm.TagHook {
 	}
 }
 
-func convertPullRequestHook(src *pullRequestHook) *scm.PullRequestHook {
-	return &scm.PullRequestHook{
+func convertPullRequestHook(src *pullRequestHook) *scm.PullRequestMapChangesHook {
+	return &scm.PullRequestMapChangesHook{
 		// Action        Action
 		Repo: scm.Repository{
 			ID:        fmt.Sprint(src.Repository.ID),
@@ -1050,7 +1050,7 @@ func convertPullRequestHook(src *pullRequestHook) *scm.PullRequestHook {
 		Label:        convertLabel(src.Label),
 		PullRequest:  *convertPullRequest(&src.PullRequest),
 		Sender:       *convertUser(&src.Sender),
-		Changes:      *convertPullRequestChanges(&src.Changes),
+		Changes:      src.Changes,
 		Installation: convertInstallationRef(src.Installation),
 	}
 }

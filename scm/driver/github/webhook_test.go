@@ -205,7 +205,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_sync.json",
 			after:  "testdata/webhooks/pr_sync.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request opened
 		{
@@ -213,7 +213,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_opened.json",
 			after:  "testdata/webhooks/pr_opened.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request closed
 		{
@@ -221,7 +221,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_closed.json",
 			after:  "testdata/webhooks/pr_closed.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request reopened
 		{
@@ -229,7 +229,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_reopened.json",
 			after:  "testdata/webhooks/pr_reopened.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request ready for review
 		{
@@ -237,7 +237,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_ready_for_review.json",
 			after:  "testdata/webhooks/pr_ready_for_review.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request converted to draft
 		{
@@ -253,7 +253,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_edited.json",
 			after:  "testdata/webhooks/pr_edited.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request labeled
 		{
@@ -261,7 +261,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_labeled.json",
 			after:  "testdata/webhooks/pr_labeled.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request unlabeled
 		{
@@ -269,7 +269,7 @@ func TestWebhooks(t *testing.T) {
 			event:  "pull_request",
 			before: "testdata/webhooks/pr_unlabeled.json",
 			after:  "testdata/webhooks/pr_unlabeled.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request comment
 		{

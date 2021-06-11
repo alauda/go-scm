@@ -223,7 +223,7 @@ func convertTagHook(src *pushHook) *scm.TagHook {
 	}
 }
 
-func convertPullRequestHook(src *pullRequestHook) *scm.PullRequestHook {
+func convertPullRequestHook(src *pullRequestHook) *scm.PullRequestMapChangesHook {
 	action := scm.ActionUpdate
 	switch src.ObjectAttributes.Action {
 	case "open":
@@ -274,14 +274,8 @@ func convertPullRequestHook(src *pullRequestHook) *scm.PullRequestHook {
 	}
 	pr.Base.Repo = *convertRepositoryHook(src.ObjectAttributes.Target)
 	pr.Head.Repo = *convertRepositoryHook(src.ObjectAttributes.Source)
-	changes := scm.PullRequestHookChanges{
-		Base: scm.PullRequestHookBranch{
-			Sha: scm.PullRequestHookBranchFrom{
-				From: src.ObjectAttributes.OldRev,
-			},
-		},
-	}
-	return &scm.PullRequestHook{
+	changes := src.Changes
+	return &scm.PullRequestMapChangesHook{
 		Action:      action,
 		PullRequest: pr,
 		Repo:        repo,
@@ -732,9 +726,8 @@ type (
 			Action              string      `json:"action"`
 			OldRev              string      `json:"oldrev"`
 		} `json:"object_attributes"`
-		Labels  []interface{} `json:"labels"`
-		Changes struct {
-		} `json:"changes"`
+		Labels     []interface{}          `json:"labels"`
+		Changes    map[string]interface{} `json:"changes"`
 		Repository struct {
 			Name        string `json:"name"`
 			URL         string `json:"url"`
