@@ -290,6 +290,17 @@ type (
 		Installation *InstallationRef
 	}
 
+	PullRequestMapChangesHook struct {
+		Action       Action
+		Repo         Repository
+		Label        Label
+		PullRequest  PullRequest
+		Sender       User
+		Changes      map[string]interface{}
+		GUID         string
+		Installation *InstallationRef
+	}
+
 	// PullRequestCommentHook represents an pull request
 	// comment event, eg pull_request_comment.
 	PullRequestCommentHook struct {
@@ -375,7 +386,8 @@ func (h *IssueHook) Kind() WebhookKind { return WebhookKindIssue }
 func (h *IssueCommentHook) Kind() WebhookKind { return WebhookKindIssueComment }
 
 // Kind returns the kind of webhook
-func (h *PullRequestHook) Kind() WebhookKind { return WebhookKindPullRequest }
+func (h *PullRequestHook) Kind() WebhookKind           { return WebhookKindPullRequest }
+func (h *PullRequestMapChangesHook) Kind() WebhookKind { return WebhookKindPullRequest }
 
 // Kind returns the kind of webhook
 func (h *PullRequestCommentHook) Kind() WebhookKind { return WebhookKindPullRequestComment }
@@ -453,6 +465,8 @@ func (h *IssueCommentHook) Repository() Repository { return h.Repo }
 // Repository defines the repository webhook and provides a convenient way to get the associated repository without
 // having to cast the type.
 func (h *PullRequestHook) Repository() Repository { return h.Repo }
+
+func (h *PullRequestMapChangesHook) Repository() Repository { return h.Repo }
 
 // Repository defines the repository webhook and provides a convenient way to get the associated repository without
 // having to cast the type.
@@ -555,6 +569,8 @@ func (h *IssueCommentHook) GetInstallationRef() *InstallationRef { return h.Inst
 // GetInstallationRef returns the installation reference if the webhook is invoked on a
 // GitHub App
 func (h *PullRequestHook) GetInstallationRef() *InstallationRef { return h.Installation }
+
+func (h *PullRequestMapChangesHook) GetInstallationRef() *InstallationRef { return h.Installation }
 
 // GetInstallationRef returns the installation reference if the webhook is invoked on a
 // GitHub App

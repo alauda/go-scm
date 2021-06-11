@@ -75,5 +75,15 @@
     "Name": "Sid Sijbrandij",
     "Email": "",
     "Avatar": "https://secure.gravatar.com/avatar/8c58a0be77ee441bb8f8595b7f1b4e87?s=80\u0026d=identicon"
+  },
+  "Changes": {
+    "state": {
+      "previous": "opened",
+      "current": "closed"
+    },
+    "updated_at": {
+      "previous": "2017-12-10 17:01:11 UTC",
+      "current": "2017-12-10 17:02:46 UTC"
+    }
   }
 }

@@ -77,13 +77,13 @@ func TestWebhooks(t *testing.T) {
 			event:  "Merge Request Hook",
 			before: "testdata/webhooks/pull_request_create.json",
 			after:  "testdata/webhooks/pull_request_create.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		{
 			event:  "Merge Request Hook",
 			before: "testdata/webhooks/pull_request_edited.json",
 			after:  "testdata/webhooks/pull_request_edited.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// {
 		// 	event:  "Merge Request Hook",
@@ -95,19 +95,19 @@ func TestWebhooks(t *testing.T) {
 			event:  "Merge Request Hook",
 			before: "testdata/webhooks/pull_request_close.json",
 			after:  "testdata/webhooks/pull_request_close.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		{
 			event:  "Merge Request Hook",
 			before: "testdata/webhooks/pull_request_reopen.json",
 			after:  "testdata/webhooks/pull_request_reopen.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		{
 			event:  "Merge Request Hook",
 			before: "testdata/webhooks/pull_request_merge.json",
 			after:  "testdata/webhooks/pull_request_merge.json.golden",
-			obj:    new(scm.PullRequestHook),
+			obj:    new(scm.PullRequestMapChangesHook),
 		},
 		// pull request comment hooks
 		{
